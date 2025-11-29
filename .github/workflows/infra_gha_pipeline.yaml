@@ -2,6 +2,12 @@ name: Terraform Infra Pipeline
 
 on:
   workflow_dispatch:
+    inputs:
+      destroy:
+        description: 'Set to true to destroy infrastructure'
+        required: true
+        default: 'false'
+
 
 jobs:
   tf-infra:
@@ -38,6 +44,11 @@ jobs:
     - name: terraform apply
       working-directory: tf4
       run: terraform apply -auto-approve    
+
+    - name: Check for destroy
+      if: ${{ github.event.inputs.destroy == 'true' }}
+      run: terraform destroy -auto-approve
+      working-directory: tf4
     
     # - name: tf workflow
     #   run: |
