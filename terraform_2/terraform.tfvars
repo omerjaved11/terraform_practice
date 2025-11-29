@@ -1,0 +1,7 @@
+ami_id = "ami-08ca1d1e465fbfe0c"
+itype = "t2.micro"
+az_2b = "us-east-2b"
+key_name ="vmkey" 
+sg_id ="sg-082f5a5523afce0f3"
+vm_web_1 = "WebServer1"
+vm_web_2 = "WebServer2"

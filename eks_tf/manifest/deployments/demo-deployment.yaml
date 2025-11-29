@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: atlas-deployment
+  namespace: web
+spec:
+  template:
+    metadata:
+      labels:
+        service: nginx
+    spec:
+      containers:
+      - name: atlas-container
+        image: nginx:1.25
+        resources:
+          requests:
+            cpu: "50m"
+            memory: "100Mi"
+          limits:
+            cpu: "100m"
+            memory: "200Mi"
+  replicas: 3
+  selector:
+    matchLabels:
+      service: nginx

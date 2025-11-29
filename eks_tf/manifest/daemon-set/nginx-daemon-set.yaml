@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: monitoring-agent
+spec:
+  template:
+    metadata:
+      labels:
+        app: monitor-my-node
+    spec:
+      containers:
+      - name: agent-container
+        image: nginx:latest
+      nodeSelector:
+        monitor: active
+  selector:
+    matchLabels:
+      app: monitor-my-node

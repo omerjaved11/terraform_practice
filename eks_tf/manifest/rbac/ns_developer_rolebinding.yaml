@@ -1,0 +1,13 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: atc-developer-rolebinding
+  namespace: testns
+subjects:
+- kind: User
+  name: k8-test
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role
+  name: atc-developer
+  apiGroup: rbac.authorization.k8s.io
